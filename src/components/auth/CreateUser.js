@@ -1,21 +1,50 @@
-import React from 'react'
-import { useForm } from '../../hooks/useForm'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { signup } from '../../actions/auth';
+import Swal from 'sweetalert2';
 
 export const CreateUser = () => {
-
-    const [{ name, roll, idNumber, email, password }, handleInputChange] = useForm({
+    
+    const [registerData, setRegisterData] = useState({
         name: '',
         roll: '',
         idNumber: '',
         email: '',
-        password: ''
+        password: '',
+        password2: ''
     })
+
+    const dispatch = useDispatch();
+
+    const { 
+    name,
+    roll,
+    idNumber,
+    email,
+    password,
+    password2 } = registerData;
+
+    const handleInputChange = ({ target }) => {
+        setRegisterData({
+            ...registerData,
+            [target.name]: target.value
+        });
+
+    }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(handleSubmit)
         
+        if ( password !== password2 ) {
+            return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
+        }
+        console.log('?')
+        dispatch(signup( email, password, name, idNumber, roll));
     }
+        
+    
 
     return (
         <div>
@@ -79,6 +108,16 @@ export const CreateUser = () => {
                     className="form-control mb-3"
                     autoComplete="off"
                     value={password}
+                    onChange={handleInputChange}
+                />
+                <label className="form-label h6">Confirme el password</label>
+                 <input
+                    name="password2"
+                    type="password"
+                    placeholder="confirme password"
+                    className="form-control mb-3"
+                    autoComplete="off"
+                    value={password2}
                     onChange={handleInputChange}
                 />
                 <button
