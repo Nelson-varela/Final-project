@@ -4,7 +4,8 @@ const router = express.Router();
 const{ getPosts, getPost, createPost, updatePost, likePost, commentPost, deletePost }
 = require( '../controllers/postNews-controller.js')
 
-
+const { auth } = require('../middleware/auth')
+auth
 router.get('/', getPosts);
 router.get('/:id', getPost);
 
