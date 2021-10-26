@@ -3,16 +3,18 @@ const jwt = require('jsonwebtoken');
 
 const userCtrl = {};
 
-const secret = 'test';
+const secret = 'Esto-Es-UnA-PalbR@_SecretA12341267'
 
 const Users = require('../models/Users');
 
 
 userCtrl.signin = async (req, res) => {
     const {email, password} = req.body;
+
     try {
         const oldUser= await Users.findOne({email});
         if(!oldUser) return res.status(400).json({message: 'User does not exist'});
+
          const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
 
         if (!isPasswordCorrect) return res.status(400).json({message: 'Invalid Credentials'});
@@ -25,15 +27,19 @@ userCtrl.signin = async (req, res) => {
 };
 
 userCtrl.signup = async (req, res) => {
-    const {email, password, name, roll, idNumber}= req.body;
+    const { email, password, firstName, lastName } = req.body;
 
     try {
          const oldUser = await Users.findOne({email});
-         if(oldUser) return res.status(400).json({message: 'User already in use'})
+
+         if (oldUser) return res.status(400).json({ message: "User already exists" });
+
           const hashedPassword = await bcrypt.hash(password, 12);
 
-          const result = await Users.create({email, password: hashedPassword, name, roll, idNumber});
+          const result = await Users.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+
           const token = jwt.sign( {email: result.email, id: result._id }, secret, {expiresIn: "10h"} );
+
           res.status(201).json({ result, token });
     } catch (error) {
         res.status(500).json({ message: "Something went wrong" });

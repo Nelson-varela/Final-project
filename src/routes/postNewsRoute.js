@@ -1,19 +1,23 @@
 const express = require('express');
+
 const router = express.Router();
 
 const{ getPosts, getPost, createPost, updatePost, likePost, commentPost, deletePost }
 = require( '../controllers/postNews-controller.js')
 
-const { auth } = require('../middleware/auth')
-auth
-router.get('/', getPosts);
-router.get('/:id', getPost);
+const auth = require('../middleware/auth.js')
 
-router.post('/', createPost);
-router.patch('/:id', updatePost);
-router.delete('/:id', deletePost);
-router.patch('/:id/likePost', likePost);
-router.post('/:id/commentPost', commentPost);
+
+
+
+router.get('/', getPosts);
+router.get('/:id', auth, getPost);
+
+router.post('/', auth, createPost);
+router.patch('/:id', auth, updatePost);
+router.delete('/:id', auth, deletePost);
+router.patch('/:id/likePost', auth, likePost);
+router.post('/:id/commentPost', auth, commentPost);
 
 module.exports = router;
 
