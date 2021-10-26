@@ -1,7 +1,43 @@
-import React from 'react'
-import { Link, NavLink} from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink, useHistory, useLocation} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as actionType from '../../types/types';
+import decode from 'jwt-decode';
 
 export const Navbar = () => {
+
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const history = useHistory();
+
+    const logout = () => {
+
+        dispatch({ type: actionType.LOGOUT, 
+            user: ''
+           
+         });
+    
+        history.replace('/login')
+    
+        
+      };
+
+
+      useEffect(() => {
+        const token = user?.token;
+    
+        if (token) {
+          const decodedToken = decode(token);
+    
+          if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+    
+        setUser(JSON.parse(localStorage.getItem('profile')));
+      }, [location]);
+
+      
+
     return (
             <nav className="navbar navbar-expand navbar-light bg-white">
             
@@ -72,6 +108,7 @@ export const Navbar = () => {
 
                     <button
                         className="mx-3 btn btn-warning btn-sm" 
+                        onClick={logout}
                         
                     >
                         Logout

@@ -14,11 +14,11 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
         title: '',
         message: '',
         selectedFile: '',
-        tags: '',
-        creator: 'Admin'
+        tags: ''
+        
     })
     
-    const { message, title, selectedFile, tags, creator } = postData;
+    const { message, title, selectedFile, tags } = postData;
 
     const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
 
     const clear = () => {
         setCurrentId(0);
-        setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+        setPostData({ title: '', message: '', tags: '', selectedFile: '' });
       };
 
     const handleSubmit = (e) => {
@@ -63,17 +63,6 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
                 
                 <form noValidate onSubmit={handleSubmit} >
 
-
-                <label className="form-label h6">Creador</label>
-                <input
-                    name="creator"
-                    type="text"
-                    placeholder="Creador"
-                    className="form-control mb-2"
-                    autoComplete="off"
-                    value={creator}
-                    onChange={handleInputChange}
-                />
                 
                 <label className="form-label h6">{currentId ? `Editing "${title}"` : 'Escribe un asunto'}</label>
                 <input

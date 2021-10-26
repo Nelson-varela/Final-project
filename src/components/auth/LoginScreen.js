@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { signin } from '../../actions/auth';
 
+
+const initialState = { email: '', password: '' };
 
 export const LoginScreen = () => {
 
-    const [loginData, setLoginData] = useState({
-        email: '',
-        password: ''
-    })
+    const [loginData, setLoginData] = useState({initialState})
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    const { email, password } = loginData;
 
     const handleInputChange = ({ target }) => {
         setLoginData({
@@ -20,7 +23,12 @@ export const LoginScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(handleSubmit)
+
+        const lastPath= localStorage.getItem('lastPath') || '/';
+        
+        dispatch(signin(loginData));
+
+        history.replace(lastPath)
         
     }
 
@@ -44,7 +52,7 @@ export const LoginScreen = () => {
                 <h1 className="font-weight-bold mb-4 text-warning">TrackMe: Descubre lo nuevo</h1>
                 <form  onSubmit={handleSubmit}
                     className="mb-5">
-                    <div clasNames="mb-4">
+                    <div className="mb-4">
                       <label  className="form-label font-weight-bold text-warning" >Email</label>
                       <input 
                       className="form-control bg-dark-x border-0" 
@@ -52,19 +60,17 @@ export const LoginScreen = () => {
                       type="email"
                       placeholder="Escriba su password"
                       autoComplete="off"
-                      value={email}
                       onChange={handleInputChange}
                       />
                     </div>
                     <div className="mb-4">
-                      <label  class="form-label font-weight-bold text-warning">Contraseña</label>
+                      <label  className="form-label font-weight-bold text-warning">Contraseña</label>
                       <input 
                       className="form-control bg-dark-x border-0 mb-2" 
                       name="password"
                       type="password"
                       placeholder="Escriba su password"
                       autoComplete="off"
-                      value={password}
                       onChange={handleInputChange}
                       
                       />
@@ -78,8 +84,8 @@ export const LoginScreen = () => {
 
                 
                 </div>
-                <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-                    <p className="d-inline-block mb-0 text-warning">¿Todavia no tienes una cuenta?</p> <p class="text-light font-weight-bold ">Acercate a tu supervisor</p>
+                <div className="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
+                    <p className="d-inline-block mb-0 text-warning">¿Todavia no tienes una cuenta?</p> <p className="text-light font-weight-bold ">Acercate a tu supervisor</p>
                 </div>
             </div>
         </div>

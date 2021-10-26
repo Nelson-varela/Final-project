@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
 import { signup } from '../../actions/auth';
 import Swal from 'sweetalert2';
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+
 export const CreateUser = () => {
     
-    const [registerData, setRegisterData] = useState({
-        name: '',
-        roll: '',
-        idNumber: '',
-        email: '',
-        password: '',
-        password2: ''
-    })
-
+    const [registerData, setRegisterData] = useState({initialState})
+    
     const dispatch = useDispatch();
-
-    const { 
-    name,
-    roll,
-    idNumber,
-    email,
-    password,
-    password2 } = registerData;
+    const history = useHistory();
 
     const handleInputChange = ({ target }) => {
         setRegisterData({
@@ -32,16 +20,13 @@ export const CreateUser = () => {
         });
 
     }
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+            dispatch(signup(registerData, history));
+          
         
-        if ( password !== password2 ) {
-            return Swal.fire('Error', 'Las contraseñas deben de ser iguales','error');
-        }
-        console.log('?')
-        dispatch(signup( email, password, name, idNumber, roll));
     }
         
     
@@ -56,28 +41,28 @@ export const CreateUser = () => {
                 <div className="col-5">
             <form onSubmit={handleSubmit} >
                 
-                <label className="form-label h6">Nombre y Apellido</label>
+                <label className="form-label h6">Nombre</label>
                 <input
-                    name="name"
+                    name="firstName"
                     type="text"
-                    placeholder="Nombre y apellido"
+                    placeholder="Nombre"
                     className="form-control mb-3"
                     autoComplete="off"
-                    value={name}
+                    onChange={handleInputChange}
+                />
+
+                <label className="form-label h6">Apellido</label>
+                <input
+                    name="lastName"
+                    type="text"
+                    placeholder="Apellido"
+                    className="form-control mb-3"
+                    autoComplete="off"
                     onChange={handleInputChange}
                 />
                 
-                <label className="form-label h6">Numero de Identificación</label>
-                 <input
-                    name="idNumber"
-                    type="text"
-                    placeholder="Numero de documento"
-                    className="form-control  mb-3"
-                    autoComplete="off"
-                    value={idNumber}
-                    onChange={handleInputChange}
-                />
-                <label className="form-label h6">Elija el Roll dentro de la compañía</label>
+                
+                {/* <label className="form-label h6">Elija el Roll dentro de la compañía</label>
                  <select
                     name="roll"
                     placeholder="Roll usuario"
@@ -89,7 +74,8 @@ export const CreateUser = () => {
                     <option defaultValue>Seleccione un roll</option>
                     <option>Administrador</option>
                     <option>Operaciones</option>
-                </select>
+                </select> */}
+
                 <label className="form-label h6">Email</label>
                  <input
                     name="email"
@@ -97,7 +83,6 @@ export const CreateUser = () => {
                     placeholder="Email Usuario"
                     className="form-control  mb-3"
                     autoComplete="off"
-                    value={email}
                     onChange={handleInputChange}
                 />
                 <label className="form-label h6">Asigne un Password</label>
@@ -107,17 +92,15 @@ export const CreateUser = () => {
                     placeholder="Password"
                     className="form-control mb-3"
                     autoComplete="off"
-                    value={password}
                     onChange={handleInputChange}
                 />
                 <label className="form-label h6">Confirme el password</label>
                  <input
-                    name="password2"
+                    name="confirmPassword"
                     type="password"
                     placeholder="confirme password"
                     className="form-control mb-3"
                     autoComplete="off"
-                    value={password2}
                     onChange={handleInputChange}
                 />
                 <button

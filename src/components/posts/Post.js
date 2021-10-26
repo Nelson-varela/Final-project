@@ -17,7 +17,7 @@ export const Post = ({ post, setCurrentId }) => {
     return (
         <div className=" position-relative">
             <div className="card card-header mx-auto" style={{maxWidth: "650px"}}>
-            <h6 className="mx-2 mt-2">{moment(post.createdAt).fromNow()} por: {post.creator} Admin</h6>
+            <h6 className="mx-2 mt-2">{moment(post.createdAt).fromNow()} por: {post.name} Admin</h6>
                 <h5 className="mx-2 mt-2">{post.title}</h5>
                 <img src={post.selectedFile} className="card-img" alt={''}/>
                     <div className="card-body">
