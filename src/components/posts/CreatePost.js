@@ -9,7 +9,7 @@ import { createPost, updatePost } from '../../actions/posts';
 export const CreatePost = ({ currentId, setCurrentId}) => {
 
   
-
+ 
     const [postData, setPostData] = useState({
         title: '',
         message: '',

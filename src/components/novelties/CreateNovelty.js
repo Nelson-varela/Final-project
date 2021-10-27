@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FileBase from 'react-file-base64';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNovelty } from '../../actions/novelties';
 
 
-export const CreateNovelty = () => {
 
+export const CreateNovelty = ({ currentId, setCurrentId}) => {
 
     const [noveltyData, setNoveltyData] = useState({
         title: '',
         message: '',
-        slectedfile: '',
-        creator: ''
+        selectedfile: '',
+
     })
+
+    const novelty = useSelector((state) => (currentId ? state.novelties.find((message) => message._id === currentId) : null));
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
+
+
+
+    useEffect(() => {
+        if (novelty) setNoveltyData(novelty);
+      }, [novelty]);
+
     
-    const { message, title, selectedFile, creator } = noveltyData;
+    const { message, title, selectedFile } = noveltyData;
 
     const handleInputChange = ({target}) => {
         setNoveltyData({
@@ -21,9 +34,19 @@ export const CreateNovelty = () => {
         });
 
     }
+
+    const clear = () => {
+        setNoveltyData({ title: '', message: '', selectedFile: '' });
+      };
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(handleSubmit)
+        
+        
+            dispatch(createNovelty({ ...noveltyData, name: user?.result?.name }));
+            clear();
+        
         
     }
     return (
@@ -63,16 +86,6 @@ export const CreateNovelty = () => {
                      onChange={handleInputChange}/>
                      
                 </div>
-                 <label className="form-label h6">Creador</label>
-                 <input
-                    name="creator"
-                    type="text"
-                    placeholder="Tu nombre"
-                    className="form-control  mb-3"
-                    autoComplete="off"
-                    value={creator}
-                    onChange={handleInputChange}
-                /> 
                 
                 <button
                     type="submit"
