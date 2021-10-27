@@ -6,7 +6,7 @@ const PostNews = require('../models/PostNews.js');
 const postsCtrl = {};
 
 
-postsCtrl.getPosts = async (req, res) => { 
+postsCtrl.getPosts = async (req, res) => {  
     try {
         const postNews = await PostNews.find();
                 
@@ -70,13 +70,25 @@ postsCtrl.deletePost = async (req, res) => {
 postsCtrl.likePost = async (req, res) => {
     const { id } = req.params;
 
+    if (!req.userId) {
+        return res.json({ message: "Unauthenticated" });
+      }
+
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
     
     const post = await PostNews.findById(id);
 
-    const updatedPost = await PostNews.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+    const index = post.likes.findIndex((id) => id ===String(req.userId));
 
-    res.status(200).json(updatedPost);
+    if (index === -1) {
+        post.likes.push(req.userId);
+      } else {
+        post.likes = post.likes.filter((id) => id !== String(req.userId));
+      }
+
+      const updatedPost = await PostNews.findByIdAndUpdate(id, post, { new: true });
+      res.status(200).json(updatedPost);
+
 }
 
 postsCtrl.commentPost = async (req, res) => {
