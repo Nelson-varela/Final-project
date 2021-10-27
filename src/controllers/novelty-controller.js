@@ -27,12 +27,12 @@ noveltyCtrl.getNovelty = async (req, res) => {
 
 
 noveltyCtrl.createNovelty = async (req, res) => {
-    const post = req.body;
+    const novelty = req.body;
 
-    const newNovelty = new Novelty({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
+    const newNovelty = new Novelty({ ...novelty, creator: req.userId, createdAt: new Date().toISOString() })
 
     try {
-        await NewNovelty.save();
+        await newNovelty.save();
 
         res.status(201).json(newNovelty);
     } catch (error) {
