@@ -1,6 +1,7 @@
 import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../types/types';
 
-export const postsReducer = (posts = [], action) => {
+
+export default (posts = [], action) => {
     switch (action.type) {
       case FETCH_ALL:
         return action.payload;

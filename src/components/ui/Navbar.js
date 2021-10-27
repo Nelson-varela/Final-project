@@ -13,12 +13,12 @@ export const Navbar = () => {
 
     const logout = () => {
 
-        dispatch({ type: actionType.LOGOUT, 
-            user: ''
+        dispatch({ type: actionType.LOGOUT
            
          });
     
-        history.replace('/login')
+        history.replace('/login') 
+        setUser(null);
     
         
       };
@@ -35,7 +35,9 @@ export const Navbar = () => {
     
         setUser(JSON.parse(localStorage.getItem('profile')));
       }, [location]);
+         
 
+      
       
 
     return (
@@ -103,8 +105,8 @@ export const Navbar = () => {
             <div className="order-3 pr-3 ">
                 <ul className="navbar-nav ml-auto">
                     
-                    <span className="nav-item nav-link text-warning">Nelson Varela</span>
-                    <span className="nav-item nav-link text-info">Admin</span>
+                    <h6 className="nav-item nav-link text-dark">Hola, {user?.result.name}</h6>
+                    <h6 className="nav-item nav-link text-info">Admin</h6>
 
                     <button
                         className="mx-3 btn btn-warning btn-sm" 

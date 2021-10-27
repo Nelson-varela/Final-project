@@ -22,6 +22,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
 
     const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
         if (post) setPostData(post);
@@ -44,14 +45,16 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
         e.preventDefault();
         
         if (currentId === 0) {
-            dispatch(createPost(postData));
+            dispatch(createPost({ ...postData, name: user?.result?.name }));
             clear();
         } else {
-            dispatch(updatePost(currentId, postData));
+            dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             clear();
         }
         
     }
+
+    
 
 
     return (
@@ -61,7 +64,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
             </div>
              <div className="row">
                 
-                <form noValidate onSubmit={handleSubmit} >
+                <form onSubmit={handleSubmit} >
 
                 
                 <label className="form-label h6">{currentId ? `Editing "${title}"` : 'Escribe un asunto'}</label>
