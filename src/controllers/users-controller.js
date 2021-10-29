@@ -27,7 +27,7 @@ userCtrl.signin = async (req, res) => {
 };
 
 userCtrl.signup = async (req, res) => {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, firstName, lastName, roll } = req.body;
 
     try {
          const oldUser = await Users.findOne({email});
@@ -36,7 +36,7 @@ userCtrl.signup = async (req, res) => {
 
           const hashedPassword = await bcrypt.hash(password, 12);
 
-          const result = await Users.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
+          const result = await Users.create({ roll, email, password: hashedPassword, name: `${firstName} ${lastName}` });
 
           const token = jwt.sign( {email: result.email, id: result._id }, secret, {expiresIn: "10h"} );
 
