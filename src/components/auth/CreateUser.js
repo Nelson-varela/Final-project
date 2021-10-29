@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { signup } from '../../actions/auth';
 import Swal from 'sweetalert2';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { firstName: '', lastName: '', email: '', roll: '', password: '', confirmPassword: '' };
 
 export const CreateUser = () => {
     
@@ -32,7 +32,9 @@ export const CreateUser = () => {
     
 
     return (
+        
         <div>
+            
             <div>
                 <h2>Registra un nuevo usuario</h2>
                 <hr />
@@ -62,19 +64,17 @@ export const CreateUser = () => {
                 />
                 
                 
-                {/* <label className="form-label h6">Elija el Roll dentro de la compañía</label>
+                 <label className="form-label h6">Elija el Roll dentro de la compañía</label>
                  <select
                     name="roll"
-                    placeholder="Roll usuario"
                     className="form-control  mb-3"
                     autoComplete="off"
-                    value={roll}
                     onChange={handleInputChange}
                 >
                     <option defaultValue>Seleccione un roll</option>
                     <option>Administrador</option>
                     <option>Operaciones</option>
-                </select> */}
+                </select> 
 
                 <label className="form-label h6">Email</label>
                  <input
@@ -110,9 +110,12 @@ export const CreateUser = () => {
                 </button>
             </form>
             </div>
+        
         </div>
+
     </div>
 
+        
 
     )
 }

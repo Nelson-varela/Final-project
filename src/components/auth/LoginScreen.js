@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { signin } from '../../actions/auth';
-
+import './loginScreen.css'
 
 const initialState = { email: '', password: '' };
 
@@ -11,6 +11,7 @@ export const LoginScreen = () => {
     const [loginData, setLoginData] = useState({initialState})
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
 
     const handleInputChange = ({ target }) => {
@@ -24,20 +25,25 @@ export const LoginScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const lastPath= localStorage.getItem('lastPath') || '/';
         
-        dispatch(signin(loginData));
 
-        history.replace(lastPath)
+        
+         dispatch(signin(loginData));
+        
+         setTimeout(() => {
+            history.replace('/')
+          }, 1000);
+       
+        
         
     }
 
     return (
         <div className="bg-light">
             
-            <div className="row g-0">
-            <div className="col-lg-7 d-none d-lg-block">
-                <img src={'https://raw.githubusercontent.com/Bragovar/Loguin/main/img-1.jpg'} alt="" />
+            <div className="row g-0"> 
+            <div className="col-lg-7 d-none d-lg-block img-drone">
+                
 
             </div>
             

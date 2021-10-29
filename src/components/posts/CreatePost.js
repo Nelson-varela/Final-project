@@ -58,12 +58,21 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
 
 
     return (
+        
         <div>
+           
+             
             <div>
-                <h5>Crea un comunicado:</h5>
+                {
+                (user?.result.roll === 'Administrador') 
+                && (<h5>Crea un comunicado:</h5>)
+                }
             </div>
              <div className="row">
-                
+                {
+                    (user?.result.roll === 'Administrador') 
+                    && 
+                    (
                 <form onSubmit={handleSubmit} >
 
                 
@@ -113,12 +122,16 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
                 
                 <button
                     type="submit"
-                    className="btn mt-3 btn-warning">
+                    className="btn mt-2 btn-warning">
                     Enviar comunicado
                 </button>
             </form>
+                    )
+             }
             </div>
-            
+        
+        
     </div>
+        
     )
 }

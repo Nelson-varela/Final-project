@@ -14,7 +14,7 @@ export const Post = ({ post, setCurrentId, }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
 
-     const Likes = () => {
+     /* const Likes = () => {
         if (post.likes.length > 0) {
           return post.likes.find((like) => like === (user?.result?._id)) ? (
             <><ThumbsupIcon size={16}/>&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
@@ -24,11 +24,11 @@ export const Post = ({ post, setCurrentId, }) => {
 
           }
           return <><ThumbsupIcon size={16} />&nbsp;Like</>;
-        } 
+        }  */
 
     return (
         <div className=" position-relative">
-            <div className="card card-header mx-auto" style={{maxWidth: "650px"}}>
+            <div className="card card-header" style={{maxWidth: "550px"}}>
             <h6 className="mx-2 mt-2">{moment(post.createdAt).fromNow()} por: {post.name}</h6>
                 <h5 className="mx-2 mt-2">{post.title}</h5>
                 <img src={post.selectedFile} className="card-img" alt={''}/>
@@ -39,7 +39,7 @@ export const Post = ({ post, setCurrentId, }) => {
                     
                         <button className="col-3 pe-auto btn-sm btn-outline-primary"  disabled={!user?.result}
                         disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
-                        Likes
+                            <ThumbsupIcon size={16}/> Me Gusta  {post.likeCount}
                          {/* <Likes />   */}
                             
                         </button>

@@ -68,7 +68,9 @@ export const Navbar = () => {
                               Novedades
                        </button>
                     </NavLink>
-                   
+                    {
+                (user?.result.roll === 'Administrador') 
+                && (
                     <li className="nav-item dropdown">
                     <NavLink 
                     
@@ -85,19 +87,8 @@ export const Navbar = () => {
                       <li><Link to="/usuario/crear" className="dropdown-item" >Crear un Usuario</Link></li>
                     </ul>
                     </li>
-                   {/*  {
-                    user.roll === 'Admin' &&
-                     (
-                        <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/search"
-                    >
-                        Search Hero
-                    </NavLink>
-                    )
-                    } */}
+                )
+               }
                     
                 </div>
             </div>
@@ -106,10 +97,10 @@ export const Navbar = () => {
                 <ul className="navbar-nav ml-auto">
                     
                     <h6 className="nav-item nav-link text-dark">Hola, {user?.result.name}</h6>
-                    <h6 className="nav-item nav-link text-info">Admin</h6>
+                    <h6 className="nav-item nav-link text-info">{user?.result.roll}</h6>
 
                     <button
-                        className="mx-3 btn btn-warning btn-sm" 
+                        className="mx-3 btn btn-danger btn-sm" 
                         onClick={logout}
                         
                     >
