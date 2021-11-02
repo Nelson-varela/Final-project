@@ -59,7 +59,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
 
     return (
         
-        <div>
+        <div className="card card-header">
            
              
             <div>
@@ -99,8 +99,8 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
                 ></textarea>
                 
                 <label className=" h6">Sube una imagen o archivo</label>
-                 <div className="mb-2">
-                     <FileBase type="file" multiple={false} 
+                 <div className="mb-2 ">
+                     <FileBase className="mx-3" type="file" multiple={false} 
                      onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
                      value={selectedFile}
                      />
@@ -122,7 +122,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
                 
                 <button
                     type="submit"
-                    className="btn mt-2 btn-warning">
+                    className="btn mt-2 mb-2 btn-warning">
                     Enviar comunicado
                 </button>
             </form>

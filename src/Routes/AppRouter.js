@@ -1,14 +1,23 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
-    Route,
     Switch,
     
   } from "react-router-dom";
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { DashboradRoutes } from './DashboardRoutes';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
+
+  
+   
+   const auth = useSelector((state) => state.auth);
+   console.log(auth)
+   
+
     return (
         
         <Router>
@@ -17,14 +26,17 @@ export const AppRouter = () => {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-              <Route 
+              <PublicRoute 
               exact path="/login" 
               component ={ LoginScreen }
+              isAuthenticated={auth.logged}
               />
                
-              <Route 
+              <PrivateRoute
               path="/" 
               component ={ DashboradRoutes } 
+              isAuthenticated={auth.logged}
+              
               />
           </Switch>
         </div>

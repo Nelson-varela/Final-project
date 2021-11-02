@@ -11,7 +11,7 @@ export const LoginScreen = () => {
     const [loginData, setLoginData] = useState({initialState})
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = JSON.parse(localStorage.getItem('profile'));
+    
 
 
     const handleInputChange = ({ target }) => {
