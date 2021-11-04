@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
  API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -10,14 +10,16 @@ const API = axios.create({ baseURL: 'http://localhost:5000' });
   return req;
 });
 
-export const fetchPosts = () => API.get('api/posts');
-export const createPost = (newPost) => API.post('api/posts', newPost);
-export const likePost = (id) => API.patch(`api/posts/${id}/likePost`);
-export const updatePost = (id, updatedPost) => API.patch(`api/posts/${id}`, updatedPost);
-export const deletePost = (id) => API.delete(`api/posts/${id}`);
+export const fetchPosts = () => API.get('/posts');
+export const createPost = (newPost) => API.post('/posts', newPost);
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, { value });
 
-export const signIn = (formData) => API.post('api/users/signin', formData);
-export const signUp = (formData) => API.post('api/users/signup', formData);
 
-export const fetchNovelties = () => API.get('api/novelties');
-export const createNovelty = (newNovelty) => API.post('api/novelties', newNovelty);
+export const signIn = (formData) => API.post('/users/signin', formData);
+export const signUp = (formData) => API.post('/users/signup', formData);
+
+export const fetchNovelties = () => API.get('/novelties');
+export const createNovelty = (newNovelty) => API.post('/novelties', newNovelty);

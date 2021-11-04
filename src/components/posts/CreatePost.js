@@ -4,7 +4,7 @@ import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
 
-
+ 
 
 export const CreatePost = ({ currentId, setCurrentId}) => {
 
