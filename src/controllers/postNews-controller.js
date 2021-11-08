@@ -78,15 +78,15 @@ postsCtrl.likePost = async (req, res) => {
     
     const post = await PostNews.findById(id);
 
-    /* const index = post.likes.findIndex((id) => id ===String(req.userId));
+    const index = post.likes.findIndex((id) => id === String(req.userId));
 
     if (index === -1) {
         post.likes.push(req.userId);
       } else {
         post.likes = post.likes.filter((id) => id !== String(req.userId));
-      } */
+      } 
 
-      const updatedPost = await PostNews.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+      const updatedPost = await PostNews.findByIdAndUpdate(id, post, { new: true });
       res.status(200).json(updatedPost);
 
 }
