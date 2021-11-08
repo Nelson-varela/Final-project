@@ -9,21 +9,23 @@ export const NoveltyScreen = () => {
     const [currentId, setCurrentId] = useState(0);
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    /* useEffect(() => {
         dispatch(getNovelties());
-      }, [currentId, dispatch]);
+      }, [currentId, dispatch]); */
+
+      dispatch(getNovelties())
 
 
     return (
         
             <div className="row">
                 <div className="col-5">
-            <CreateNovelty currentId={currentId} setCurrentId={setCurrentId}/>
+            <CreateNovelty currentId={currentId} />
                 </div>
             
 
             <div className="col-7">
-               <Novelties  setCurrentId={setCurrentId}/>
+               <Novelties />
             </div>
            
             

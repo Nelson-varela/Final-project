@@ -5,7 +5,7 @@ import { createNovelty } from '../../actions/novelties';
 
 
 
-export const CreateNovelty = ({ currentId, setCurrentId}) => {
+export const CreateNovelty = ({ currentId}) => {
 
     const [noveltyData, setNoveltyData] = useState({
         title: '',

@@ -4,11 +4,10 @@ import moment from 'moment';
 
 
 
-export const Novelty = ({ novelty, setCurrentId, }) => {
+export const Novelty = ({ novelty }) => {
 
     moment.locale('es');
-    const user = JSON.parse(localStorage.getItem('profile'));
-
+   
 
 
     return (
