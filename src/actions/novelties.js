@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE } from '../types/types';
+import { FETCH_ALL_N, CREATE_N } from '../types/types';
 
 import * as api from '../api/index.js';
 
@@ -7,7 +7,7 @@ export const getNovelties = () => async (dispatch) => {
     try {
       const { data } = await api.fetchNovelties();
   
-      dispatch({ type: FETCH_ALL, payload: data });
+      dispatch({ type: FETCH_ALL_N, payload: data });
     } catch (error) {
       console.log(error);
     }
@@ -17,7 +17,7 @@ export const getNovelties = () => async (dispatch) => {
     try {
       const { data } = await api.createNovelty(novelty);
   
-      dispatch({ type: CREATE, payload: data });
+      dispatch({ type: CREATE_N, payload: data });
     } catch (error) {
       console.log(error);
     }

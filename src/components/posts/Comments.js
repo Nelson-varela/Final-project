@@ -7,14 +7,14 @@ import { useDispatch } from 'react-redux';
 export const Comments = ({post}) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
-    const [comment, setComment] = useState({comment: ""})
+    const [comment, setComment] = useState("")
     const dispatch = useDispatch();
     const commentsRef = useRef();
 
     const [comments, setComments] = useState(post?.comments);
 
     const clear = () => {
-      setComment({comment: ""});
+      setComment("");
     };
 
 
@@ -25,6 +25,10 @@ export const Comments = ({post}) => {
     
         setComment('');
         setComments(newComments);
+
+        if(comment === ""){
+          setComment(null)
+        }
     
         commentsRef.current.scrollIntoView({ behavior: 'smooth' });
 
@@ -38,8 +42,9 @@ export const Comments = ({post}) => {
 
 
     return (
-        <div>
-            <h3>Comentarios</h3>
+        <div className="card">
+          <div className="card-body">
+            <h3 >Comentarios</h3>
             <hr />
 
 
@@ -69,6 +74,7 @@ export const Comments = ({post}) => {
               Comentar 
              </button>
              </form>
+             </div>
         </div>
     )
 }

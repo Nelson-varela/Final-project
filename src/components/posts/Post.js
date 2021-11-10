@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import {ThumbsupIcon, CommentDiscussionIcon, TrashIcon, PencilIcon} from '@primer/octicons-react'
+import {ThumbsupIcon, TrashIcon, PencilIcon} from '@primer/octicons-react'
 
 import { likePost, deletePost } from '../../actions/posts';
 import { Comments } from './Comments';
@@ -32,11 +32,11 @@ export const Post = ({ post }) => {
                 <div className="col-7">
         <div className=" position-relative">
             <div className="card card-header mb-3" style={{maxWidth: "550px"}}>
-            <h6 className="mx-2 mt-2">{moment(post.createdAt).fromNow()} por: {post.name}</h6>
+            <h6 className="mx-2 mt-2 text-muted">{moment(post.createdAt).fromNow()} por: <strong className="text-primary">{post.name}</strong> </h6>
                 <h5 className="mx-2 mt-2">{post.title}</h5>
                 <img src={post.selectedFile} className="card-img" alt={''}/>
                     <div className="card-body">
-                        <p className="card-text">{post.message}</p>
+                        <p className="card-text fst-italic">{post.message}</p>
                          <p>{post.tags.map((tag) => `#${tag} `)}</p> 
                             <div className="row">
                     
@@ -52,11 +52,11 @@ export const Post = ({ post }) => {
                         <button className="col-3 pe-auto btn-sm btn-outline-danger" 
                         onClick={() => dispatch(deletePost(post._id))}><TrashIcon size={16}/> Borrar</button>
                         )}
-                        { (user?.result?._id === post?.creator) && (
+                        {/* { (user?.result?._id === post?.creator) && (
                         <button className="col-3 pe-auto btn-sm btn-outline-info" 
                         ><PencilIcon size={16} /> Editar</button>
-                        )}
-                        <p className="col-3">{post.comments.length} Comentarios</p>
+                        )} */}
+                        <p className="col-3 position-absolute bottom-0 end-0">{post.comments.length} Comentarios</p>
                         
                             </div>
                         </div>

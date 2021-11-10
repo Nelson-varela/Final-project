@@ -7,11 +7,11 @@ export const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts);
 
     return (
-        <div>
+        <div  >
         {
             posts.map((post)=> (
-                <div key={post._id}>
-                <Post  post={post} setCurrentId={setCurrentId}/>
+                <div className="flex-column-reverse" key={post._id}>
+                <Post post={post} setCurrentId={setCurrentId}/>
                 </div>
             ))
         }

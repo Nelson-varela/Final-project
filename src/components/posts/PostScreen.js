@@ -17,14 +17,14 @@ export const PostScreen = () => {
     
     return (
         <div>
-                <h2>Zona de Comunicados DroneTop</h2>
+                <h2 className="sticky-top">Zona de Comunicados DroneTop</h2>
                 <hr />
                 <div className="row">
                     <div className="col-3">
                        <CreatePost currentId={currentId} setCurrentId={setCurrentId} />
                     </div>
 
-                   <div className="col-9">
+                   <div className="col-9" >
                    <Posts  setCurrentId={setCurrentId}/>
                     </div>
                 </div> 

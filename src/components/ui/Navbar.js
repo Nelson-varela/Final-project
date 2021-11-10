@@ -41,7 +41,7 @@ export const Navbar = () => {
       
 
     return (
-            <nav className="navbar navbar-expand navbar-light bg-white">
+            <nav className="navbar navbar-expand fixed-top navbar-dark bg-dark">
             
             <NavLink
                 className="mx-3 navbar-brand" 
@@ -96,11 +96,11 @@ export const Navbar = () => {
             <div className="order-3 pr-3 ">
                 <ul className="navbar-nav ml-auto">
                     
-                    <h6 className="nav-item nav-link text-dark">Hola, {user?.result.name}</h6>
-                    <h6 className="nav-item nav-link text-info">{user?.result.roll}</h6>
+                    <h6 className="nav-item nav-link text-white">Hola, {user?.result.name}</h6>
+                    <h6 className="nav-item nav-link text-info"><strong className="h6">{user?.result.roll}</strong></h6>
 
                     <button
-                        className="mx-3 btn btn-danger btn-sm" 
+                        className="mx-3 btn btn-warning btn-sm" 
                         onClick={logout}
                         
                     >

@@ -9,13 +9,13 @@ export const Novelties = () => {
     return (
         <div>
         {
-            novelties.map((novelty)=> (
+            novelties.reverse().map((novelty)=> (
                 <div key={novelty._id}>
                 <Novelty  novelty={novelty} />
                 </div>
             ))
         }
-            
+             
         </div>
     )
 }

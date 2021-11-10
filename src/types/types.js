@@ -8,3 +8,6 @@ export const COMMENT = 'COMMENT';
 
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+
+export const FETCH_ALL_N = 'FETCH_ALL_N';
+export const CREATE_N = 'CREATE_N';

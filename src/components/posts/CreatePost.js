@@ -59,7 +59,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
 
     return (
         
-        <div className="card card-header">
+        <div className="">
            
              
             <div>
@@ -68,7 +68,7 @@ export const CreatePost = ({ currentId, setCurrentId}) => {
                 && (<h5>Crea un comunicado:</h5>)
                 }
             </div>
-             <div className="row">
+             <div className="row"> 
                 {
                     (user?.result.roll === 'Administrador') 
                     && 
