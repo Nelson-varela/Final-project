@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signup } from '../../actions/auth';
@@ -13,6 +13,7 @@ export const CreateUser = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    
     const handleInputChange = ({ target }) => {
         setRegisterData({
             ...registerData,

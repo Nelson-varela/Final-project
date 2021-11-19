@@ -9,11 +9,11 @@ export const NoveltyScreen = () => {
     const [currentId, setCurrentId] = useState(0);
     const dispatch = useDispatch();
 
-    /* useEffect(() => {
+     useEffect(() => {
         dispatch(getNovelties());
-      }, [currentId, dispatch]); */
+      }, [currentId, dispatch]); 
 
-      dispatch(getNovelties())
+      /* dispatch(getNovelties()) */
 
 
     return (

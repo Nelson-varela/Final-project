@@ -12,10 +12,10 @@ import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
 
-  
+  const user = JSON.parse(localStorage.getItem('profile'));
    
-   const auth = useSelector((state) => state.auth);
-   console.log(auth)
+    const auth = useSelector((state) => state.auth);
+   console.log(auth) 
    
 
     return (
@@ -35,7 +35,7 @@ export const AppRouter = () => {
               <PrivateRoute
               path="/" 
               component ={ DashboradRoutes } 
-              isAuthenticated={auth.logged}
+              isAuthenticated={user?.token}
               
               />
           </Switch>

@@ -18,7 +18,7 @@ export const CreateNovelty = ({ currentId}) => {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
 
-
+ 
 
     useEffect(() => {
         if (novelty) setNoveltyData(novelty);

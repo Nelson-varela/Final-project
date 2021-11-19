@@ -20,7 +20,7 @@ export const Comments = ({post}) => {
 
     const handleComment = async (e) => {
 
-      e.preventDefault();
+        e.preventDefault(); 
         const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
     
         setComment('');
@@ -29,12 +29,14 @@ export const Comments = ({post}) => {
         if(comment === ""){
           setComment(null)
         }
+       
     
         commentsRef.current.scrollIntoView({ behavior: 'smooth' });
 
-        clear();
+        
       };
 
+      
 
 
 
@@ -44,7 +46,7 @@ export const Comments = ({post}) => {
     return (
         <div className="card">
           <div className="card-body">
-            <h3 >Comentarios</h3>
+            <h3 className="text-center">Comentarios</h3>
             <hr />
 
 
