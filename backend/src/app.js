@@ -17,5 +17,6 @@ app.use(express.json());
 app.use('/api/posts', require('./routes/postNewsRoute'));
 app.use('/api/novelties', require('./routes/noveltyRoute'));
 app.use('/api/users', require('./routes/userRoute'));
+app.use('/api/sessions', require('./routes/sessionsRoute'));
 
 module.exports = app;

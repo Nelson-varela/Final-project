@@ -10,9 +10,17 @@ const Users = require('../models/Users');
 const Sessions = require('../models/Sessions');
 
 userCtrl.signout = async (req, res) => {
-  const { sessionId } = req;
+  const token = req.headers.authorization.split(' ')[1];
+  const decodedToken = jwt.decode(token);
+  let logoutDate = new Date();
   try {
-    await Sessions.findByIdAndUpdate(sessionId, { logoutDate: new Date() });
+    const isValid = jwt.verify(token, secret, (err) => {
+      if (err) {
+        // if jwt is expired take expire time as logout time
+        logoutDate = new Date(decodedToken.exp * 1000);
+      }
+    });
+    await Sessions.findByIdAndUpdate(decodedToken.sessionId, { logoutDate });
     res.status(204).send();
   }
   catch (error) {
