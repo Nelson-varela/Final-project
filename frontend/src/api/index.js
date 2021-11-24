@@ -26,5 +26,4 @@ export const fetchNovelties = () => API.get('/novelties');
 export const createNovelty = (newNovelty) => API.post('/novelties', newNovelty);
 
 export const getSessions = () => API.get('/sessions');
-export const logginSession = (newLoggin) => API.post('/sessions', newLoggin);
-export const logoutSession = (newLogout) => API.post('/sessions', newLogout);
+export const getSessionsByUser = (userId) => API.get(`/sessions/${userId}`);
