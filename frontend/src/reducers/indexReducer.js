@@ -2,9 +2,8 @@ import {combineReducers} from 'redux';
 import posts from './postReducer';
 import auth from './authReducer';
 import novelties from './noveltyReducer';
-import logs from './logsReducer';
-
+import sessions from './sessionsReducer';
 
 export const reducers = combineReducers({
-    posts, auth, novelties, logs
+  posts, auth, novelties, sessions
 });

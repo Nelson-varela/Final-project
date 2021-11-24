@@ -24,9 +24,10 @@ export const signup = (formData, router) => async (dispatch) => {
 export const signout = (router) => async (dispatch) => {
   try {
     await api.signOut();
-    dispatch({ type: LOGOUT });
     router.push('/login');
+    dispatch({ type: LOGOUT });
   } catch (error) {
     console.log(error);
+    dispatch({ type: LOGOUT });
   }
 };

@@ -7,6 +7,6 @@ const { signin, signup, signout } = require('../controllers/users-controller');
 
 router.post('/signin', signin);
 router.post('/signup', signup);
-router.post('/signout', authMiddleware, signout);
+router.post('/signout', signout);
 
 module.exports = router;

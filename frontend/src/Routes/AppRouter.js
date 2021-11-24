@@ -1,5 +1,6 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { AUTH } from '../types/types';
+import { useSelector, useDispatch } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,9 +14,7 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
-   
-    const auth = useSelector((state) => state.auth);
-   console.log(auth) 
+  const auth = useSelector((state) => state.auth);
    
 
     return (
@@ -25,20 +24,22 @@ export const AppRouter = () => {
   
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
+          {
           <Switch>
-              <PublicRoute 
-              exact path="/login" 
-              component ={ LoginScreen }
-              isAuthenticated={auth.logged}
-              />
-               
-              <PrivateRoute
-              path="/" 
-              component ={ DashboradRoutes } 
-              isAuthenticated={user?.token}
-              
-              />
-          </Switch>
+            <PublicRoute 
+            exact path="/login" 
+            component ={ LoginScreen }
+            isAuthenticated={auth.logged}
+            />
+            
+            <PrivateRoute
+            path="/" 
+            component ={ DashboradRoutes } 
+            isAuthenticated={user?.token}
+            
+            />
+        </Switch>
+          }
         </div>
       </Router>
     )

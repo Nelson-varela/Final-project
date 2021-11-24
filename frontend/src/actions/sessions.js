@@ -1,34 +1,21 @@
-import { FETCH_ALL_LOGS, CREATE_LOGGIN, CREATE_LOGOUT } from '../types/types';
+import { FETCH_ALL_SESSIONS, FETCH_SESSIONS_BY_USER } from '../types/types';
 
-import * as api from '../api/index.js';
-
+import * as api from '../api/index';
 
 export const getSessions = () => async (dispatch) => {
-    try {
-      const { data } = await api.getSessions();
-  
-      dispatch({ type: FETCH_ALL_LOGS, payload: data });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-  export const logginSession = (session) => async (dispatch) => {
-    try {
-      const { data } = await api.logginSession(session);
-  
-      dispatch({ type: CREATE_LOGGIN, payload: data });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const { data } = await api.getSessions();
+    dispatch({ type: FETCH_ALL_SESSIONS, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-  export const logoutSession = (session) => async (dispatch) => {
-    try {
-      const { data } = await api.logoutSession(session);
-  
-      dispatch({ type: CREATE_LOGOUT, payload: data });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const getSessionsByUser = (userId) => async (dispatch) => {
+  try {
+    const { data } = await api.getSessionsByUser(userId);
+    dispatch({ type: FETCH_SESSIONS_BY_USER, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

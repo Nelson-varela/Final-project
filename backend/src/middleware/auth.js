@@ -6,24 +6,18 @@ const auth = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
     const isCustomAuth = token.length < 500;
-
-    let decodedData;
-
+    const decodedData = jwt.decode(token);
     if (token && isCustomAuth) {
-      decodedData = jwt.verify(token, secret);
-
-      req.userId = decodedData.id;
-      req.sessionId = decodedData.sessionId;
+      const isValid = jwt.verify(token, secret);
+      req.userId = isValid.id;
     }
     else {
-      decodedData = jwt.decode(token);
-
       req.userId = decodedData.sub;
     }
     next();
   }
   catch (error) {
-    console.log(error);
+    res.status(403).json({ message: 'Forbidden' });
   }
 };
 
