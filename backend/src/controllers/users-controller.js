@@ -39,6 +39,7 @@ userCtrl.signin = async (req, res) => {
 
     if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalid Credentials' });
     const session = await Sessions.create({
+      name: oldUser.name,
       userId: oldUser._id.toString(),
       loginDate: new Date(),
       logoutDate: null

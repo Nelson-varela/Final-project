@@ -5,8 +5,11 @@ import { getSessions } from '../../actions/sessions';
 
 export const LogReportsScreen = () => {
   const sessions = useSelector((state) => state.sessions);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  
   // ToDo: change this view to get Users instead sessions
   useEffect(() => {
     dispatch(getSessions());
@@ -15,26 +18,40 @@ export const LogReportsScreen = () => {
   const handleClick = userId => {
     history.push(`/report/${userId}`);
   }
+
+  
   
   return (
     <div>
-      <h1>LogReportsScreen</h1>
+      <h1>Reporte de Logueo</h1>
+      <hr />
+      
       {
         sessions.map((session, idx) => (
           <div key={`session-${idx}`}>
             <p>
-              <span>userId: </span>
+              <span>ID del Usuario: </span>
               <span>{session.userId}</span>
             </p>
+            { 
+            
             <p>
-              <span>loginDate: </span>
+              <span>Nombre del Usuario: </span>
+              <span>{session.name}</span>
+            </p>
+
+            
+              
+              }
+            <p>
+              <span>Hora de Loggin: </span>
               <span>{session.loginDate}</span>
             </p>
             <p>
-              <span>logoutDate: </span>
+              <span>Hora de Logout: </span>
               <span>{session.logoutDate}</span>
             </p>
-            <button onClick={() => handleClick(session.userId)}>Ver por usuario: {session.userId}</button>
+            <button className="btn btn-success"onClick={() => handleClick(session.userId)}>Ver por usuario: {session.name}</button>
             <hr/>
           </div>
         ))

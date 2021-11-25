@@ -21,18 +21,20 @@ const LogsByUser = () => {
 
   return (
     <div>
-      <h1>Logs</h1>
+     
       {
         sessions.map((s, idx) => (
           <div key={`session-${idx}-by-${userId}`}>
+             <h3>logueo de {s.name} //poner dia y mes</h3>
+             <hr />
             <p>
-              loginDate: {s.loginDate}
+              Hora de Loggin: {s.loginDate}
             </p>
             <p>
-              logoutDate: {s.logoutDate}
+              Hora de Logout: {s.logoutDate}
             </p>
             <p>
-              time worked: {calculateTimeBetweenDates(s.loginDate, s.logoutDate)} seconds
+              Tiempo trabajado: {calculateTimeBetweenDates(s.loginDate, s.logoutDate)} segundos
             </p>
             <hr/>
           </div>

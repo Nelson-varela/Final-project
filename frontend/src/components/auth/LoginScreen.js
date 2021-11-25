@@ -11,6 +11,7 @@ export const LoginScreen = () => {
     const [loginData, setLoginData] = useState({ ...initialState })
     const dispatch = useDispatch();
     const router = useHistory();
+    
 
     const handleInputChange = ({ target }) => {
         setLoginData(prev => ({
@@ -91,7 +92,8 @@ export const LoginScreen = () => {
 
                         </div>
                         <div className="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-                            <p className="d-inline-block mb-0 text-warning">¿Todavia no tienes una cuenta?</p> <p className="text-light font-weight-bold ">Acercate a tu supervisor</p>
+                            <p className="d-inline-block mb-0 text-warning">¿Todavia no tienes una cuenta?</p> 
+                            <p className="text-light font-weight-bold ">Acercate a tu supervisor</p>
                         </div>
                     </div>
                 </div>
