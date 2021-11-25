@@ -5,7 +5,6 @@ import { getSessions } from '../../actions/sessions';
 
 export const LogReportsScreen = () => {
   const sessions = useSelector((state) => state.sessions);
-  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -27,7 +26,7 @@ export const LogReportsScreen = () => {
       <hr />
       
       {
-        sessions.map((session, idx) => (
+        sessions.reverse().map((session, idx) => (
           <div key={`session-${idx}`}>
             <p>
               <span>ID del Usuario: </span>
@@ -51,7 +50,7 @@ export const LogReportsScreen = () => {
               <span>Hora de Logout: </span>
               <span>{session.logoutDate}</span>
             </p>
-            <button className="btn btn-success"onClick={() => handleClick(session.userId)}>Ver por usuario: {session.name}</button>
+            <button className="btn btn-warning"onClick={() => handleClick(session.userId)}>Ver todos los logs por usuario: {session.name}</button>
             <hr/>
           </div>
         ))

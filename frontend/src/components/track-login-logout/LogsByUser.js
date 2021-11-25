@@ -16,16 +16,16 @@ const LogsByUser = () => {
   const calculateTimeBetweenDates = (startDate, endDate) => {
     const sD = new Date(startDate);
     const eD = new Date(endDate);
-    return Math.floor((eD.getTime() - sD.getTime()) / 1000);
+    return Math.floor((eD.getTime() - sD.getTime()) / 1000 /60);
   }
 
   return (
     <div>
      
       {
-        sessions.map((s, idx) => (
+        sessions.reverse().map((s, idx) => (
           <div key={`session-${idx}-by-${userId}`}>
-             <h3>logueo de {s.name} //poner dia y mes</h3>
+             <h3>Logueo de {s.name} //poner dia y mes</h3>
              <hr />
             <p>
               Hora de Loggin: {s.loginDate}
@@ -34,7 +34,7 @@ const LogsByUser = () => {
               Hora de Logout: {s.logoutDate}
             </p>
             <p>
-              Tiempo trabajado: {calculateTimeBetweenDates(s.loginDate, s.logoutDate)} segundos
+              Tiempo trabajado: {calculateTimeBetweenDates(s.loginDate, s.logoutDate)} Minutos
             </p>
             <hr/>
           </div>

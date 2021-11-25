@@ -86,8 +86,8 @@ export const Navbar = () => {
             <div className="order-3 pr-3 ">
                 <ul className="navbar-nav ml-auto">
 
-                    <h6 className="nav-item nav-link text-white">Hola, {user?.result.name}</h6>
-                    <h6 className="nav-item nav-link text-info"> {user?.result.roll}</h6>
+                    <h6 className="nav-item nav-link text-warning">Hola, {user?.result.name}</h6>
+                    <h6 className="nav-item nav-link text-white"> {user?.result.roll}</h6>
 
                     <button
                         className="mx-3 btn btn-warning btn-sm"

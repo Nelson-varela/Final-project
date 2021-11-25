@@ -33,7 +33,7 @@ export const Post = ({ post }) => {
       <div className="col-7">
         <div className=" position-relative">
           <div className="card card-header mb-3" style={{ maxWidth: "550px" }}>
-            <h6 className="mx-2 mt-2 text-muted">{moment(post.createdAt).fromNow()} por: <strong className="text-primary">{post.name}</strong> </h6>
+            <h6 className="mx-2 mt-2 text-muted">{moment(post.createdAt).fromNow()} por: <strong className="text-warning">{post.name}</strong> </h6>
             <h5 className="mx-2 mt-2">{post.title}</h5>
             <img src={post.selectedFile} className="card-img" alt={''} />
             <div className="card-body">
@@ -41,7 +41,7 @@ export const Post = ({ post }) => {
               <p>{post.tags.map((tag) => `#${tag} `)}</p>
               <div className="row">
 
-                <button className="col-3 pe-auto btn-sm btn-outline-primary" disabled={!user?.result}
+                <button className="col-3 pe-auto btn-sm btn-warning" disabled={!user?.result}
                   onClick={() => dispatch(likePost(post._id))}>
 
                   <Likes />

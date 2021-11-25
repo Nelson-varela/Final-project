@@ -44,15 +44,15 @@ export const Comments = ({post}) => {
 
 
     return (
-        <div className="card">
+        <div className="card-header">
           <div className="card-body">
-            <h3 className="text-center">Comentarios</h3>
+            <h4 className="text-center">Comentarios</h4>
             <hr />
 
 
             {comments?.map((c, i) => (
             <h5 key={i} >
-              <strong className="text-primary">{c.split(': ')[0]}</strong>
+              <strong className="text-warning">{c.split(': ')[0]}</strong>
               {c.split(':')[1]}
             </h5>
              ))}
@@ -70,7 +70,7 @@ export const Comments = ({post}) => {
             onChange={(e) => setComment(e.target.value)}
              />
              <button 
-             className="btn btn-primary"
+             className="btn btn-warning"
              onClick={handleComment}
              >
               Comentar 
