@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { signin } from '../../actions/auth';
+import useTitle from '../../hooks/useTitle';
 
 import './loginScreen.css'
 
@@ -11,6 +12,7 @@ export const LoginScreen = () => {
     const [loginData, setLoginData] = useState({ ...initialState })
     const dispatch = useDispatch();
     const router = useHistory();
+    useTitle({title: 'Log-In'})
     
 
     const handleInputChange = ({ target }) => {

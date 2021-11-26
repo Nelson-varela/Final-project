@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getPosts } from '../../actions/posts';
+import useTitle from '../../hooks/useTitle';
+
 
 import { CreatePost } from './CreatePost';
 import { Posts } from './Posts';
@@ -9,6 +11,7 @@ export const PostScreen = () => {
 
   const [currentId, setCurrentId] = useState(0);  
   const dispatch = useDispatch();
+  useTitle({title: 'Home'})
 
   useEffect(() => {
     dispatch(getPosts());

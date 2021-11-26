@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
+import {  NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as actionType from '../../types/types';
+
 import decode from 'jwt-decode';
 import { signout } from '../../actions/auth';
 

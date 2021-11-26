@@ -11,7 +11,7 @@ export default (posts = [], action) => {
         return [...posts, action.payload];
       case COMMENT:
         return posts.map((post) => {
-            if (post._id == +action.payload._id) {
+            if (post._id === action.payload._id) {
              return action.payload;
            }
            return post;

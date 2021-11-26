@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSessionsByUser } from '../../actions/sessions';
 
+import moment from 'moment';
+import useTitle from '../../hooks/useTitle';
+
 
 const LogsByUser = () => {
   const dispatch = useDispatch();
   const sessions = useSelector(state => state.sessions);
   const { userId } = useParams();
-  // ToDo: get user to show name in view
+  useTitle({title: 'Reporte por usuario'})
+  moment.locale('es');
+
+
+  
   useEffect(() => {
     dispatch(getSessionsByUser(userId));
   }, []);
@@ -25,13 +32,13 @@ const LogsByUser = () => {
       {
         sessions.reverse().map((s, idx) => (
           <div key={`session-${idx}-by-${userId}`}>
-             <h3>Logueo de {s.name} //poner dia y mes</h3>
+             <h3>Logueo de {s.name} del {moment(s.loginDate).format('LL')}</h3>
              <hr />
             <p>
-              Hora de Loggin: {s.loginDate}
+              Hora de Loggin: {moment(s.loginDate).format('LT')}
             </p>
             <p>
-              Hora de Logout: {s.logoutDate}
+              Hora de Logout: {moment(s.logoutDate).format('LT')}
             </p>
             <p>
               Tiempo trabajado: {calculateTimeBetweenDates(s.loginDate, s.logoutDate)} Minutos

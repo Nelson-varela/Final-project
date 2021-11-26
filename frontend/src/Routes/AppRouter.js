@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { AUTH } from '../types/types';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react'
+
+import { useSelector } from 'react-redux';
 import {
     BrowserRouter as Router,
     Switch,

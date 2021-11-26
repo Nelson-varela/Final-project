@@ -13,11 +13,6 @@ export const Comments = ({post}) => {
 
     const [comments, setComments] = useState(post?.comments);
 
-    const clear = () => {
-      setComment("");
-    };
-
-
     const handleComment = async (e) => {
 
         e.preventDefault(); 
