@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css","loginScreen.css"],"names":[],"mappings":"AAAA,KACI,SACJ,CCFA,WACI,+FAAkG,CAClG,qBAGJ","file":"main.4f167c00.chunk.css","sourcesContent":["body{\r\n    padding: 0px\r\n}",".img-drone{\r\n    background-image: url(\"https://w0.peakpx.com/wallpaper/709/151/HD-wallpaper-quadcopter-drone.jpg\");\r\n    background-size: cover;\r\n\r\n    \r\n}"]}

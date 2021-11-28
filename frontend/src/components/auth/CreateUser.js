@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signup } from '../../actions/auth';
-import Swal from 'sweetalert2';
+
 
 const initialState = { firstName: '', lastName: '', email: '', roll: '', password: '', confirmPassword: '' };
 
