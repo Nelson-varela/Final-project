@@ -14,7 +14,7 @@ export const NoveltyScreen = () => {
      useEffect(() => {
         dispatch(getNovelties());
       }, [currentId, dispatch]); 
-      setCurrentId(null)
+      
 
       
 

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Final-project/tree/backend/frontend/static/css/main.4f167c00.chunk.css",
+    "main.js": "/Final-project/tree/backend/frontend/static/js/main.c76956b3.chunk.js",
+    "main.js.map": "/Final-project/tree/backend/frontend/static/js/main.c76956b3.chunk.js.map",
+    "runtime-main.js": "/Final-project/tree/backend/frontend/static/js/runtime-main.9833907f.js",
+    "runtime-main.js.map": "/Final-project/tree/backend/frontend/static/js/runtime-main.9833907f.js.map",
+    "static/js/2.c6cdda85.chunk.js": "/Final-project/tree/backend/frontend/static/js/2.c6cdda85.chunk.js",
+    "static/js/2.c6cdda85.chunk.js.map": "/Final-project/tree/backend/frontend/static/js/2.c6cdda85.chunk.js.map",
+    "index.html": "/Final-project/tree/backend/frontend/index.html",
+    "precache-manifest.b6e313b02d3d35a21cbaa86f78bcfcbe.js": "/Final-project/tree/backend/frontend/precache-manifest.b6e313b02d3d35a21cbaa86f78bcfcbe.js",
+    "service-worker.js": "/Final-project/tree/backend/frontend/service-worker.js",
+    "static/css/main.4f167c00.chunk.css.map": "/Final-project/tree/backend/frontend/static/css/main.4f167c00.chunk.css.map",
+    "static/js/2.c6cdda85.chunk.js.LICENSE.txt": "/Final-project/tree/backend/frontend/static/js/2.c6cdda85.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9833907f.js",
+    "static/js/2.c6cdda85.chunk.js",
+    "static/css/main.4f167c00.chunk.css",
+    "static/js/main.c76956b3.chunk.js"
+  ]
+}
